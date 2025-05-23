@@ -1,33 +1,9 @@
 
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float, Text } from "@react-three/drei";
 
 interface SkillsSectionProps {
   onNavigate: (index: number) => void;
 }
-
-const SkillIcon3D = ({ position, color, text }: any) => {
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <group position={position}>
-        <mesh>
-          <sphereGeometry args={[0.5, 32, 32]} />
-          <meshStandardMaterial color={color} />
-        </mesh>
-        <Text
-          position={[0, 0, 0.6]}
-          fontSize={0.2}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-        >
-          {text}
-        </Text>
-      </group>
-    </Float>
-  );
-};
 
 const skills = [
   {
@@ -59,24 +35,36 @@ const skills = [
   }
 ];
 
+// Animated skill bubble component
+const SkillBubble = ({ color, text, positionClass }: { color: string; text: string; positionClass: string }) => (
+  <motion.div
+    className={`absolute rounded-full flex items-center justify-center ${positionClass}`}
+    style={{ backgroundColor: color, width: '60px', height: '60px' }}
+    animate={{
+      y: [0, -10, 0],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+      repeatType: "reverse",
+    }}
+  >
+    <span className="text-white font-bold text-xs">{text}</span>
+  </motion.div>
+);
+
 const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
   return (
     <div className="min-h-screen py-20 px-6 relative">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-20">
-        <Canvas camera={{ position: [0, 0, 8] }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <pointLight position={[-10, -10, -10]} color="#9333ea" />
-          
-          <SkillIcon3D position={[-4, 3, 0]} color="#61dafb" text="React" />
-          <SkillIcon3D position={[4, 2, 0]} color="#3178c6" text="TS" />
-          <SkillIcon3D position={[0, 4, 0]} color="#339933" text="Node" />
-          <SkillIcon3D position={[-3, -2, 0]} color="#06b6d4" text="CSS" />
-          <SkillIcon3D position={[3, -3, 0]} color="#f05032" text="Git" />
-          
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
-        </Canvas>
+      {/* Animated background with floating bubbles instead of 3D */}
+      <div className="absolute inset-0 opacity-20 overflow-hidden">
+        <SkillBubble color="#61dafb" text="React" positionClass="top-[15%] left-[20%]" />
+        <SkillBubble color="#3178c6" text="TS" positionClass="top-[25%] right-[25%]" />
+        <SkillBubble color="#339933" text="Node" positionClass="top-[40%] left-[15%]" />
+        <SkillBubble color="#06b6d4" text="CSS" positionClass="bottom-[30%] left-[25%]" />
+        <SkillBubble color="#f05032" text="Git" positionClass="bottom-[20%] right-[20%]" />
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
