@@ -1,7 +1,5 @@
 
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float, Text3D, Center } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 
@@ -9,60 +7,41 @@ interface HeroSectionProps {
   onNavigate: (index: number) => void;
 }
 
-const FloatingIcon = ({ position, color, children }: any) => {
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh position={position}>
-        <boxGeometry args={[0.5, 0.5, 0.5]} />
-        <meshStandardMaterial color={color} />
-      </mesh>
-    </Float>
-  );
-};
-
-const Scene3D = () => {
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <pointLight position={[-10, -10, -10]} color="#9333ea" />
-      
-      <FloatingIcon position={[-3, 2, 0]} color="#9333ea" />
-      <FloatingIcon position={[3, 1, 0]} color="#4f46e5" />
-      <FloatingIcon position={[0, 3, 0]} color="#ec4899" />
-      <FloatingIcon position={[-2, -1, 0]} color="#f59e0b" />
-      <FloatingIcon position={[2, -2, 0]} color="#10b981" />
-      
-      <Center>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.5}
-          height={0.1}
-          curveSegments={12}
-          bevelEnabled
-          bevelThickness={0.02}
-          bevelSize={0.02}
-          bevelOffset={0}
-          bevelSegments={5}
-        >
-          PORTFOLIO
-          <meshStandardMaterial color="#9333ea" />
-        </Text3D>
-      </Center>
-      
-      <OrbitControls enableZoom={false} enablePan={false} />
-    </>
-  );
-};
-
 const HeroSection = ({ onNavigate }: HeroSectionProps) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 relative">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-20">
-        <Canvas camera={{ position: [0, 0, 8] }}>
-          <Scene3D />
-        </Canvas>
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20 animate-gradient-shift"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.15),transparent_70%)]"></div>
+      </div>
+      
+      {/* Floating elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[1, 2, 3, 4, 5].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-8 h-8 md:w-12 md:h-12 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 0.4 + 0.2,
+              opacity: 0.1 + Math.random() * 0.2,
+              backgroundColor: ['#9333ea', '#4f46e5', '#ec4899', '#f59e0b', '#10b981'][i % 5]
+            }}
+            animate={{
+              y: [0, -20, 0],
+              x: [0, 10, 0],
+              scale: [1, 1.1, 1],
+              rotate: [0, 180, 360]
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </div>
       
       {/* Hero Content */}

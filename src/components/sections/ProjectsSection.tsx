@@ -1,24 +1,11 @@
 
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Float } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectsSectionProps {
   onNavigate: (index: number) => void;
 }
-
-const ProjectCard3D = ({ position, color }: any) => {
-  return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh position={position}>
-        <boxGeometry args={[1.5, 1, 0.1]} />
-        <meshStandardMaterial color={color} />
-      </mesh>
-    </Float>
-  );
-};
 
 const projects = [
   {
@@ -62,18 +49,8 @@ const projects = [
 const ProjectsSection = ({ onNavigate }: ProjectsSectionProps) => {
   return (
     <div className="min-h-screen py-20 px-6 relative">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-10">
-        <Canvas camera={{ position: [0, 0, 8] }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <ProjectCard3D position={[-3, 2, 0]} color="#9333ea" />
-          <ProjectCard3D position={[3, 1, 0]} color="#4f46e5" />
-          <ProjectCard3D position={[0, 3, 0]} color="#ec4899" />
-          <ProjectCard3D position={[-2, -1, 0]} color="#f59e0b" />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+      {/* Background gradient effect instead of 3D */}
+      <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-purple-600/30 via-blue-600/30 to-pink-600/30"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
