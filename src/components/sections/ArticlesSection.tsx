@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
@@ -7,6 +6,7 @@ interface ArticlesSectionProps {
   onNavigate: (index: number) => void;
 }
 
+// Reduced list of articles - keeping only one featured article
 const articles = [
   {
     title: "Building Scalable React Applications",
@@ -17,37 +17,7 @@ const articles = [
     url: "https://example.com/article-1",
     image: "/placeholder.svg",
     featured: true
-  },
-  {
-    title: "The Future of Web Development",
-    excerpt: "Exploring upcoming trends and technologies that will shape the future of web development in 2024 and beyond.",
-    date: "2024-01-10",
-    readTime: "12 min read",
-    category: "Technology",
-    url: "https://example.com/article-2",
-    image: "/placeholder.svg",
-    featured: false
-  },
-  {
-    title: "Mastering TypeScript in 2024",
-    excerpt: "A comprehensive guide to advanced TypeScript features and how they can improve your development workflow.",
-    date: "2024-01-05",
-    readTime: "15 min read",
-    category: "TypeScript",
-    url: "https://example.com/article-3",
-    image: "/placeholder.svg",
-    featured: false
-  },
-  {
-    title: "CSS Grid vs Flexbox: When to Use What",
-    excerpt: "Understanding the differences between CSS Grid and Flexbox and when to use each layout method effectively.",
-    date: "2023-12-28",
-    readTime: "6 min read",
-    category: "CSS",
-    url: "https://example.com/article-4",
-    image: "/placeholder.svg",
-    featured: false
-  },
+  }
 ];
 
 const ArticlesSection = ({ onNavigate }: ArticlesSectionProps) => {
@@ -61,11 +31,10 @@ const ArticlesSection = ({ onNavigate }: ArticlesSectionProps) => {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-glow">
-            Featured Articles
+            Featured Article
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Insights, tutorials, and thoughts on modern web development, 
-            technology trends, and best practices.
+            Insights and thoughts on modern web development and best practices.
           </p>
         </motion.div>
         
@@ -136,69 +105,6 @@ const ArticlesSection = ({ onNavigate }: ArticlesSectionProps) => {
                 </div>
               </motion.article>
             ))}
-          
-          {/* Regular Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles
-              .filter(article => !article.featured)
-              .map((article, index) => (
-                <motion.article
-                  key={article.title}
-                  initial={{ opacity: 0, y: 50, rotateX: -10 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: 0.6 + index * 0.2,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 5,
-                    z: 50,
-                  }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden group cursor-pointer"
-                  onClick={() => window.open(article.url, "_blank")}
-                >
-                  <div className="aspect-video bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center relative overflow-hidden">
-                    <motion.div
-                      className="text-4xl"
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {article.category === "TypeScript" ? "📘" : 
-                       article.category === "CSS" ? "🎨" : 
-                       article.category === "Technology" ? "🚀" : "📝"}
-                    </motion.div>
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <ArrowRight className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                  
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className="px-3 py-1 bg-white/10 text-gray-300 rounded-full text-sm">
-                        {article.category}
-                      </span>
-                      <span className="text-gray-400 text-sm">{article.readTime}</span>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-                    
-                    <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
-                      {article.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center gap-2 text-gray-400 text-sm">
-                      <Calendar className="w-4 h-4" />
-                      <span>{new Date(article.date).toLocaleDateString()}</span>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-          </div>
         </div>
         
         <motion.div
