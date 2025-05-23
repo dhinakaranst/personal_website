@@ -5,7 +5,18 @@ interface SkillsSectionProps {
   onNavigate: (index: number) => void;
 }
 
-const skills = [
+interface Skill {
+  name: string;
+  level: number;
+  color: string;
+}
+
+interface SkillCategory {
+  category: string;
+  skills: Skill[];
+}
+
+const skills: SkillCategory[] = [
   {
     category: "Frontend",
     skills: [
@@ -35,11 +46,19 @@ const skills = [
   }
 ];
 
-// Animated skill bubble component
-const SkillBubble = ({ color, text, positionClass }: { color: string; text: string; positionClass: string }) => (
+// Animated skill bubble component with proper typing
+const SkillBubble = ({ 
+  color, 
+  text, 
+  positionClass 
+}: { 
+  color: string; 
+  text: string; 
+  positionClass: string 
+}) => (
   <motion.div
     className={`absolute rounded-full flex items-center justify-center ${positionClass}`}
-    style={{ backgroundColor: color, width: '60px', height: '60px' }}
+    style={{ backgroundColor: color || "#61dafb", width: '60px', height: '60px' }}
     animate={{
       y: [0, -10, 0],
       scale: [1, 1.05, 1],
@@ -56,6 +75,9 @@ const SkillBubble = ({ color, text, positionClass }: { color: string; text: stri
 );
 
 const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
+  // Ensure skills data is valid
+  const validSkills = Array.isArray(skills) ? skills : [];
+  
   return (
     <div className="min-h-screen py-20 px-6 relative">
       {/* Animated background with floating bubbles instead of 3D */}
@@ -84,9 +106,9 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
         </motion.div>
         
         <div className="space-y-12">
-          {skills.map((category, categoryIndex) => (
+          {validSkills.map((category, categoryIndex) => (
             <motion.div
-              key={category.category}
+              key={`category-${categoryIndex}-${category.category}`}
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -96,13 +118,13 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
             >
               <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                {category.category}
+                {category.category || "Unlisted Skills"}
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {category.skills.map((skill, skillIndex) => (
+                {(category.skills || []).map((skill, skillIndex) => (
                   <motion.div
-                    key={skill.name}
+                    key={`skill-${categoryIndex}-${skillIndex}-${skill.name}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ 
@@ -113,7 +135,7 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
                   >
                     <div className="flex justify-between items-center">
                       <span className="text-white font-semibold text-lg">
-                        {skill.name}
+                        {skill.name || "Unnamed Skill"}
                       </span>
                       <motion.span
                         initial={{ opacity: 0 }}
@@ -121,14 +143,14 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
                         transition={{ delay: categoryIndex * 0.3 + skillIndex * 0.1 + 0.5 }}
                         className="text-purple-400 font-bold"
                       >
-                        {skill.level}%
+                        {typeof skill.level === 'number' ? `${skill.level}%` : 'N/A'}
                       </motion.span>
                     </div>
                     
                     <div className="relative h-3 bg-gray-700 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={{ width: `${skill.level}%` }}
+                        animate={{ width: typeof skill.level === 'number' ? `${Math.max(0, Math.min(100, skill.level))}%` : '0%' }}
                         transition={{ 
                           duration: 1.5, 
                           delay: categoryIndex * 0.3 + skillIndex * 0.1 + 0.5,
@@ -136,7 +158,7 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
                         }}
                         className="h-full rounded-full relative"
                         style={{ 
-                          background: `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)` 
+                          background: `linear-gradient(90deg, ${skill.color || "#333"}, ${skill.color || "#333"}dd)` 
                         }}
                       >
                         <motion.div
