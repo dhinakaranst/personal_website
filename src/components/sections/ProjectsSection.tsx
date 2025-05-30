@@ -9,47 +9,47 @@ interface ProjectsSectionProps {
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, and MongoDB",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    title: "CommitMetrics",
+    description: "A self-hostable Git analytics dashboard built with the MERN stack. Displays commit frequency, repository trends, and code stats for developers and teams.",
+    technologies: ["React", "Node.js", "MongoDB", "Express"],
     image: "/placeholder.svg",
-    liveUrl: "https://example.com",
+    liveUrl: "https://github.com",
     githubUrl: "https://github.com",
-    color: "#9333ea"
+    color: "#10b981"
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task management with real-time updates",
-    technologies: ["React", "Socket.io", "Express", "PostgreSQL"],
+    title: "Notes Making App",
+    description: "A lightweight note-taking app built for fast and efficient personal use with simple UI/UX and full CRUD operations support.",
+    technologies: ["JavaScript", "HTML", "CSS", "Local Storage"],
     image: "/placeholder.svg",
-    liveUrl: "https://example.com",
+    liveUrl: "https://github.com",
     githubUrl: "https://github.com",
     color: "#4f46e5"
   },
   {
-    title: "Weather Dashboard",
-    description: "Beautiful weather app with data visualization",
-    technologies: ["React", "D3.js", "Weather API", "Tailwind"],
+    title: "Health Monitoring System",
+    description: "Java Swing desktop application that tracks health parameters and visualizes data using charts. Stores records in MySQL database.",
+    technologies: ["Java", "Swing", "MySQL", "Charts"],
     image: "/placeholder.svg",
-    liveUrl: "https://example.com",
+    liveUrl: "https://github.com",
     githubUrl: "https://github.com",
-    color: "#ec4899"
+    color: "#f89820"
   },
   {
-    title: "Portfolio Website",
-    description: "Interactive portfolio with 3D animations",
-    technologies: ["React", "Three.js", "Framer Motion", "TypeScript"],
+    title: "AI-Powered Shorts Series",
+    description: "Educational content series of 50 short videos on data structures using AI-generated visuals and voice for social media platforms.",
+    technologies: ["AI Tools", "Video Editing", "Educational Content"],
     image: "/placeholder.svg",
-    liveUrl: "https://example.com",
+    liveUrl: "https://youtube.com",
     githubUrl: "https://github.com",
-    color: "#f59e0b"
+    color: "#ec4899"
   },
 ];
 
 const ProjectsSection = ({ onNavigate }: ProjectsSectionProps) => {
   return (
     <div className="min-h-screen py-20 px-6 relative">
-      {/* Background gradient effect instead of 3D */}
+      {/* Background gradient effect */}
       <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-purple-600/30 via-blue-600/30 to-pink-600/30"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
@@ -63,8 +63,8 @@ const ProjectsSection = ({ onNavigate }: ProjectsSectionProps) => {
             My Projects
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            A showcase of my latest work, featuring modern web applications 
-            built with cutting-edge technologies.
+            A showcase of my work including self-hostable tools, open-source contributions, 
+            and educational content built with modern technologies.
           </p>
         </motion.div>
         
@@ -154,6 +154,21 @@ const ProjectsSection = ({ onNavigate }: ProjectsSectionProps) => {
           transition={{ duration: 0.8, delay: 1 }}
           className="text-center mt-16"
         >
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto mb-8">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              🌍 Open Source Contributions
+            </h3>
+            <p className="text-gray-300 mb-4">
+              Actively contributing to Kestra, a modern open-source data orchestration tool. 
+              Developed and extended plugin functionality including RunRule plugin.
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center">
+              <span className="px-3 py-1 bg-green-600/30 text-green-300 rounded-full text-sm">Plugin Development</span>
+              <span className="px-3 py-1 bg-blue-600/30 text-blue-300 rounded-full text-sm">CLI Integration</span>
+              <span className="px-3 py-1 bg-purple-600/30 text-purple-300 rounded-full text-sm">Workflow Debugging</span>
+            </div>
+          </div>
+          
           <Button
             onClick={() => onNavigate(5)}
             size="lg"

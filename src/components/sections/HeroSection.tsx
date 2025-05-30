@@ -62,7 +62,7 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
               delay: 0.8 
             }}
           >
-            John Doe
+            Developer
           </motion.h1>
         </motion.div>
         
@@ -72,7 +72,7 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <h2 className="text-2xl md:text-4xl font-light mb-8 text-purple-300">
-            Full Stack Developer & UI/UX Designer
+            Full Stack Developer & Open Source Contributor
           </h2>
         </motion.div>
         
@@ -82,10 +82,10 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="space-y-6"
         >
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Crafting digital experiences with modern technologies. 
-            Specialized in React, Node.js, and cloud architecture. 
-            Passionate about creating beautiful, functional applications.
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Building tools that solve real-world problems with Java, JavaScript, and modern web technologies. 
+            Passionate about open-source development, data structures, and helping developers through 
+            self-hostable solutions.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

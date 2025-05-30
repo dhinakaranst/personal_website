@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Download, FileText, Eye } from "lucide-react";
+import { Download, FileText, Eye, Trophy, Code, Users } from "lucide-react";
 
 interface ResumeSectionProps {
   onNavigate: (index: number) => void;
@@ -13,7 +13,7 @@ const ResumeSection = ({ onNavigate }: ResumeSectionProps) => {
     const resumeUrl = "/resume.pdf";
     const link = document.createElement("a");
     link.href = resumeUrl;
-    link.download = "John_Doe_Resume.pdf";
+    link.download = "Developer_Resume.pdf";
     link.click();
   };
 
@@ -24,7 +24,7 @@ const ResumeSection = ({ onNavigate }: ResumeSectionProps) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6 relative">
-      <div className="text-center z-10 max-w-4xl mx-auto">
+      <div className="text-center z-10 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -59,10 +59,10 @@ const ResumeSection = ({ onNavigate }: ResumeSectionProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
         >
-          Download my complete professional profile, including experience, 
-          skills, and achievements in modern web development.
+          Download my complete professional profile showcasing full-stack development expertise, 
+          open-source contributions, and problem-solving achievements.
         </motion.p>
         
         <motion.div
@@ -125,22 +125,47 @@ const ResumeSection = ({ onNavigate }: ResumeSectionProps) => {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
           >
             {[
-              { label: "Experience", value: "5+ Years", icon: "🏆" },
-              { label: "Projects", value: "50+ Completed", icon: "🚀" },
-              { label: "Technologies", value: "20+ Mastered", icon: "⚡" },
+              { label: "LeetCode Days", value: "100+ Days", icon: <Code className="w-8 h-8" />, color: "from-orange-500 to-red-500" },
+              { label: "Projects Built", value: "15+ Completed", icon: <Trophy className="w-8 h-8" />, color: "from-blue-500 to-purple-500" },
+              { label: "Open Source", value: "Active Contributor", icon: <Users className="w-8 h-8" />, color: "from-green-500 to-teal-500" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4 + index * 0.2 }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center group hover:scale-105 transition-transform"
               >
-                <div className="text-3xl mb-2">{stat.icon}</div>
+                <motion.div 
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${stat.color} mb-4 group-hover:scale-110 transition-transform`}
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {stat.icon}
+                </motion.div>
                 <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
                 <div className="text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.8 }}
+            className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 max-w-3xl mx-auto"
+          >
+            <h3 className="text-2xl font-bold text-white mb-4">🎯 Current Goals</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+              <div className="space-y-2">
+                <p className="text-purple-300 font-semibold">• Launch changelog tool</p>
+                <p className="text-gray-300 text-sm">Open-source-first with free and premium tiers</p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-purple-300 font-semibold">• Community mentoring</p>
+                <p className="text-gray-300 text-sm">Help early-year engineering students</p>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -19,30 +19,44 @@ interface SkillCategory {
 
 const skills: SkillCategory[] = [
   {
-    category: "Frontend",
+    category: "Languages",
     skills: [
-      { name: "React", level: 95, color: "#61dafb" },
-      { name: "TypeScript", level: 90, color: "#3178c6" },
-      { name: "Next.js", level: 88, color: "#000000" },
-      { name: "Tailwind CSS", level: 92, color: "#06b6d4" },
+      { name: "Java", level: 95, color: "#f89820" },
+      { name: "JavaScript", level: 90, color: "#f7df1e" },
+      { name: "Python", level: 80, color: "#3776ab" },
     ]
   },
   {
     category: "Backend",
     skills: [
       { name: "Node.js", level: 90, color: "#339933" },
-      { name: "Python", level: 85, color: "#3776ab" },
-      { name: "PostgreSQL", level: 88, color: "#336791" },
-      { name: "MongoDB", level: 82, color: "#47a248" },
+      { name: "Express", level: 88, color: "#000000" },
+      { name: "REST APIs", level: 92, color: "#ff6b35" },
+      { name: "Async Programming", level: 85, color: "#4a90e2" },
+    ]
+  },
+  {
+    category: "Frontend",
+    skills: [
+      { name: "HTML", level: 95, color: "#e34f26" },
+      { name: "CSS", level: 90, color: "#1572b6" },
+      { name: "JavaScript", level: 90, color: "#f7df1e" },
+    ]
+  },
+  {
+    category: "Database",
+    skills: [
+      { name: "MongoDB", level: 88, color: "#47a248" },
+      { name: "MySQL", level: 85, color: "#4479a1" },
     ]
   },
   {
     category: "Tools & Others",
     skills: [
-      { name: "Docker", level: 80, color: "#2496ed" },
-      { name: "AWS", level: 75, color: "#ff9900" },
       { name: "Git", level: 95, color: "#f05032" },
-      { name: "Figma", level: 85, color: "#f24e1e" },
+      { name: "GitHub", level: 92, color: "#181717" },
+      { name: "VS Code", level: 95, color: "#007acc" },
+      { name: "Postman", level: 88, color: "#ff6c37" },
     ]
   }
 ];
@@ -89,19 +103,19 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
       {/* Animated background with floating bubbles - hide some on mobile */}
       <div className="absolute inset-0 opacity-20 overflow-hidden">
         <SkillBubble 
-          color="#61dafb" 
-          text="React" 
+          color="#f89820" 
+          text="Java" 
           positionClass="top-[15%] left-[20%]"
           size={isMobile ? '40px' : '60px'} 
         />
-        {!isMobile && <SkillBubble color="#3178c6" text="TS" positionClass="top-[25%] right-[25%]" />}
+        {!isMobile && <SkillBubble color="#f7df1e" text="JS" positionClass="top-[25%] right-[25%]" />}
         <SkillBubble 
           color="#339933" 
           text="Node" 
           positionClass="top-[40%] left-[15%]"
           size={isMobile ? '40px' : '60px'} 
         />
-        {!isMobile && <SkillBubble color="#06b6d4" text="CSS" positionClass="bottom-[30%] left-[25%]" />}
+        {!isMobile && <SkillBubble color="#47a248" text="Mongo" positionClass="bottom-[30%] left-[25%]" />}
         <SkillBubble 
           color="#f05032" 
           text="Git" 
@@ -122,7 +136,7 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto">
             A comprehensive overview of my technical expertise and 
-            proficiency levels across various technologies.
+            proficiency levels across various technologies and tools.
           </p>
         </motion.div>
         
@@ -212,9 +226,9 @@ const SkillsSection = ({ onNavigate }: SkillsSectionProps) => {
               Always Learning
             </h3>
             <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-              Technology evolves rapidly, and I'm committed to staying at the 
-              forefront. Currently exploring Web3, AI/ML integration, and 
-              advanced cloud architectures.
+              Completed 100+ days of LeetCode practice with Striver's DSA Sheet. 
+              Actively contributing to open-source projects like Kestra and 
+              continuously exploring new technologies to build better tools.
             </p>
           </div>
         </motion.div>
