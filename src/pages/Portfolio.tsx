@@ -19,7 +19,7 @@ const sections = [
   { id: "projects", component: ProjectsSection, title: "Projects" },
   { id: "skills", component: SkillsSection, title: "Skills" },
   { id: "contact", component: ContactSection, title: "Contact" },
-  { id: "articles", component: ArticlesSection, title: "Articles" },
+  { id: "articles", component: ArticlesSection, title: "Open Source" },
   { id: "profiles", component: CodingProfilesSection, title: "Profiles" },
 ];
 
