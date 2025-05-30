@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, GitPullRequest, Star, GitMerge } from "lucide-react";
@@ -178,11 +177,11 @@ const ArticlesSection = ({ onNavigate }: ArticlesSectionProps) => {
           className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16"
         >
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-            <div className="text-3xl font-bold text-green-400 mb-2">2</div>
+            <div className="text-3xl font-bold text-green-400 mb-2">9</div>
             <div className="text-gray-300">Merged PRs</div>
           </div>
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-            <div className="text-3xl font-bold text-purple-400 mb-2">4</div>
+            <div className="text-3xl font-bold text-purple-400 mb-2">9</div>
             <div className="text-gray-300">Total PRs</div>
           </div>
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
