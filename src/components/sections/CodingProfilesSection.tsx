@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Code, Trophy, Target } from "lucide-react";
@@ -28,8 +27,26 @@ const profiles = [
     icon: Code,
     achievements: ["Knight Badge", "Contest Specialist"]
   },
-  
-  ,
+  {
+    platform: "SkillRack",
+    username: "john_coder",
+    description: "Programming practice and skill assessments",
+    stats: { problems: "300+", score: "950", streak: "45 days" },
+    url: "https://skillrack.com/john_coder",
+    color: "#4a90e2",
+    icon: Target,
+    achievements: ["Problem Solver", "Consistent Learner"]
+  },
+  {
+    platform: "CodePen",
+    username: "johndoe_ui",
+    description: "Frontend experiments and creative coding",
+    stats: { pens: "100+", hearts: "2.5k", views: "50k+" },
+    url: "https://codepen.io/johndoe_ui",
+    color: "#47cf73",
+    icon: Trophy,
+    achievements: ["Featured Developer", "Top Contributor"]
+  }
 ];
 
 const CodingProfilesSection = ({ onNavigate }: CodingProfilesSectionProps) => {

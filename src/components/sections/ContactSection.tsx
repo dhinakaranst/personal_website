@@ -152,9 +152,15 @@ const ContactSection = ({ onNavigate }: ContactSectionProps) => {
               
               <div className="space-y-6">
                 {[
+<<<<<<< HEAD
                   { icon: Mail, label: "Email", value: "dhinakarant104@gmail.com", href: "mailto:dhinakarant104@gmail.com" },
                   { icon: Phone, label: "Phone", value: "+91 9361468184", href: "tel:+91 9361468184" },
                   { icon: MapPin, label: "Location", value: "Dharmapuri, Tamilnadu", href: "#" },
+=======
+                  { icon: Mail, label: "Email", value: "john.doe@example.com", href: "mailto:john.doe@example.com" },
+                  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
+                  { icon: MapPin, label: "Location", value: "San Francisco, CA", href: "#" },
+>>>>>>> 115efcbde1ac1da678984d1b0d45f23bca367ecf
                 ].map((item, index) => (
                   <motion.a
                     key={item.label}
@@ -183,9 +189,15 @@ const ContactSection = ({ onNavigate }: ContactSectionProps) => {
               
               <div className="grid grid-cols-2 gap-4">
                 {[
+<<<<<<< HEAD
                   { name: "LinkedIn", url: "www.linkedin.com/in/dhinakaran-t-493308259", color: "#0077b5" },
                   { name: "GitHub", url: "https://github.com/dhinakaranst", color: "#333" },
                   //{ name: "Instagram", url: "https://instagram.com", color: "#e4405f" },
+=======
+                  { name: "LinkedIn", url: "https://linkedin.com", color: "#0077b5" },
+                  { name: "GitHub", url: "https://github.com", color: "#333" },
+                  { name: "Instagram", url: "https://instagram.com", color: "#e4405f" },
+>>>>>>> 115efcbde1ac1da678984d1b0d45f23bca367ecf
                   { name: "YouTube", url: "https://youtube.com", color: "#ff0000" },
                 ].map((social, index) => (
                   <motion.a

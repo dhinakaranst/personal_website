@@ -1,7 +1,7 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import ProfilePhoto from "@/components/ProfilePhoto";
 
 interface HeroSectionProps {
   onNavigate: (index: number) => void;
@@ -46,6 +46,16 @@ const HeroSection = ({ onNavigate }: HeroSectionProps) => {
       
       {/* Hero Content */}
       <div className="text-center z-10 max-w-4xl mx-auto">
+        {/* Profile Photo */}
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8 flex justify-center"
+        >
+          <ProfilePhoto className="transform hover:scale-105 transition-transform duration-300" />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
